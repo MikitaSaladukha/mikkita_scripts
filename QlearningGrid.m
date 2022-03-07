@@ -19,12 +19,34 @@ agentOpts.EpsilonGreedyExploration.Epsilon = .04;
 qAgent = rlQAgent(qRepresentation,agentOpts);
 trainOpts = rlTrainingOptions;
 trainOpts.MaxStepsPerEpisode = 15000;
-trainOpts.MaxEpisodes= 1000;
+trainOpts.MaxEpisodes= 300;
 trainOpts.StopTrainingCriteria = "AverageReward";
-trainOpts.StopTrainingValue = 400;
+trainOpts.StopTrainingValue = 480;
 trainOpts.ScoreAveragingWindowLength = 30;
 trainingStats = train(qAgent,env,trainOpts)
-plot(env)
+plot(env);
 env.Model.Viewer.ShowTrace = true;
 env.Model.Viewer.clearTrace;
-sim(qAgent,env)
+mysim=sim(qAgent,env)
+% 
+%%TimeIsdoneData=mysim.IsDone.Time
+% TimeIsdoneDataInfo=mysim.IsDone.TimeInfo
+%%TimeActionData=mysim.Action.MDPActions.Time
+% TimeActionDataInfo=mysim.Action.MDPActions.TimeInfo
+lengthmy1=length(mysim.IsDone.Time)
+lengthmy2=length(mysim.Action.MDPActions.Time) %кол-во шагов действий 
+%isdoneData=mysim.IsDone.Data
+%isdoneDataInfo=mysim.IsDone.DataInfo
+actionData=mysim.Action.MDPActions.Data % действия
+% действия ['N';'S';'E';'W';'NE';'NW';'SE';'SW'] = [1='N';2='S';3='E';4='W';5='NE';6='NW';7='SE';8='SW']
+
+
+%actionDataInfo=mysim.Action.MDPActions.DataInfo
+
+%events=mysim.Observation.MDPObservations.Events.Data
+%observations=mysim.Observation.MDPObservations
+%simInfo=mysim.SimulationInfo
+%simInfoTrain=trainingStats.SimulationInfo
+
+
+
