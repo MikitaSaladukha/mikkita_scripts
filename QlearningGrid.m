@@ -10,8 +10,8 @@ GW.R(:,state2idx(GW,GW.TerminalStates),:) = 500;
 % 
 % GW.R(:,state2idx(GW,'[6,15]'),:) = 1;
 % GW.R(:,state2idx(GW,'[6,16]'),:) = 3;
- GW.R(state2idx(GW,"[6,16]"),state2idx(GW,"[5,16]"),:) =20;
-  GW.R(state2idx(GW,"[6,16]"),state2idx(GW,"[5,15]"),:) = 20;
+ GW.R(state2idx(GW,"[6,16]"),state2idx(GW,"[5,16]"),:) =20; %SARSA all commented, Q-learning - 1.75, DQN - 20
+  GW.R(state2idx(GW,"[6,16]"),state2idx(GW,"[5,15]"),:) = 20; %SARSA all commented, Q-learning - 1.75, DQN - 20
 % GW.R(:,state2idx(GW,'[6,17]'),:) = 1;
 
 env = rlMDPEnv(GW);
@@ -28,10 +28,10 @@ rng(0);
 % agentOpts.EpsilonGreedyExploration.Epsilon = .04;
 % qAgent = rlQAgent(qRepresentation,agentOpts);
 % trainOpts = rlTrainingOptions;
-% trainOpts.MaxStepsPerEpisode = 15000;
-% trainOpts.MaxEpisodes= 300;
+% trainOpts.MaxStepsPerEpisode = 1499;
+% trainOpts.MaxEpisodes= 3000;
 % trainOpts.StopTrainingCriteria = "AverageReward";
-% trainOpts.StopTrainingValue = 480;
+% trainOpts.StopTrainingValue = 450;
 % trainOpts.ScoreAveragingWindowLength = 30;
 % trainingStats = train(qAgent,env,trainOpts)
 % plot(env);
@@ -43,10 +43,10 @@ rng(0);
 % agentOpts.EpsilonGreedyExploration.Epsilon = .04;
 % qAgent = rlSARSAAgent(qRepresentation,agentOpts);
 % trainOpts = rlTrainingOptions;
-% trainOpts.MaxStepsPerEpisode = 15000;
-% trainOpts.MaxEpisodes= 300;
+% trainOpts.MaxStepsPerEpisode = 1499;
+% trainOpts.MaxEpisodes= 3000;
 % trainOpts.StopTrainingCriteria = "AverageReward";
-% trainOpts.StopTrainingValue = 480;
+% trainOpts.StopTrainingValue = 450;
 % trainOpts.ScoreAveragingWindowLength = 30;
 % trainingStats = train(qAgent,env,trainOpts)
 % plot(env);
